@@ -138,9 +138,9 @@ export default function UntukKamuPage() {
               initial="hidden"
               animate="show"
             >
-              Selamat <span className="font-semibold text-pink-600">anniversary ke-2</span>, sayangku.
-              Dua tahun ini campuran tawa, drama receh, ojekan perhatian, dan
-              detik-detik yang bikin aku jatuh cinta ulang setiap hari.
+              Selamat <span className="font-semibold text-pink-600">anniversary ke-2</span>, sayang.
+              Dua tahun ini ada banyak tawa, drama, sedih, dan
+              senang, aku bersyukur bisa terus sama kamu.
             </motion.p>
 
             <button
@@ -170,14 +170,13 @@ export default function UntukKamuPage() {
                 >
                   <div className="mt-4 space-y-4 leading-relaxed text-gray-700">
                     <motion.p variants={fadeUp} initial="hidden" animate="show">
-                      Terima kasih sudah jadi rumah paling nyaman buat pulang cerita.
-                      Kamu itu temanku, partner receh, sekaligus manusia favoritku.
-                      Maaf kalau aku kadang lemot atau ngambek—aku selalu belajar buat jadi
-                      versi terbaik untuk kita.
+                      Halo sayang, ga kerasa banget yaa tiba tiba udah 2 tahun aja, perasaan baru kemarin kita kenalan dan jadian.
+                      Aku bener bener ga nyangka kita bisa sejauh ini, aku gapernah berfikir orang yang aku deketin karena nemu di hashtag
+                      bakal bareng sama aku terus selama 2 tahun. Walaupun ada banyak suka duka, aku tetep seneng banget bisa terus sama kamu.
                     </motion.p>
                     <motion.p variants={fadeUp} initial="hidden" animate="show" custom={1}>
-                      Aku sayang kamu hari ini, besok, lusa, dan seterusnya.
-                      Kita tumbuh bareng-bareng ya—pelan tapi pasti, sambil pegang tangan erat-erat.
+                      Semoga di tahun kedua ini kita bisa belajar dari kesalahan sebelum sebelumnya yaa, semoga kita bisa jadi lebih
+                      baik lagi dari yang sebelumnya dan ga ngulangin kesalahan yang sama lagi, I Love You Babee!
                     </motion.p>
                     <motion.p
                       variants={fadeUp}
@@ -186,7 +185,7 @@ export default function UntukKamuPage() {
                       custom={2}
                       className="italic text-pink-700"
                     >
-                      – Dari aku, yang selalu jatuh cinta ke senyummu 💖
+                      – Dari aku
                     </motion.p>
                   </div>
                 </motion.div>
@@ -204,16 +203,16 @@ export default function UntukKamuPage() {
                 viewport={{ once: true, margin: '-80px' }}
               >
                 {[
-                  'Cara kamu bilang “bib” yang auto nyetel di hati.',
-                  'Selalu ingat detail kecil (walau pura-pura lupa kalo malu).',
+                  'Kamu pengertian banget dalam segala hal dari kekuranganku.',
+                  'Selalu inget detail kecil dari kita.',
                   'Cuma chat “udah makan belum?” udah bikin hari cerah.',
-                  'Tawa kamu = moodbooster resmi.',
-                  'Sabar pas aku overthinking, peluknya pake kata-kata.',
-                  'Jujur & apa adanya — paling bikin nyaman.',
-                  'Mau diajak receh dari meme sampai jokes bapak-bapak.',
-                  'Semangatmu nular, bikin aku ingin jadi lebih baik.',
-                  'Kamu itu “rumah” dan “petualangan” sekaligus.',
-                  'Karena kamu: aku percaya “selamanya” itu realistis.',
+                  'Cara marah kamu yang lucuu ituu.',
+                  'Sabar pas aku kadang marah marah gajelas.',
+                  'Nenangin aku pas aku sedih akan suatu hal.',
+                  'Mau diajak receh dari meme sampe jokes asep knalpot.',
+                  'Semangat gamau kalahmu yang bikin aku lebih semangat lagi.',
+                  'Mau diajak hemat dan susah wkwkwk.',
+                  'Suka peluk peluk hihihi.',
                 ].map((txt, i) => (
                   <motion.div
                     key={i}
@@ -230,7 +229,7 @@ export default function UntukKamuPage() {
 
             <div className="mt-8">
               <h2 className="text-xl font-bold text-pink-700 text-center">
-                Janji kecilku untuk tahun ini
+                Janjiku untuk tahun ini
               </h2>
               <motion.ul
                 className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-700"
@@ -240,10 +239,10 @@ export default function UntukKamuPage() {
               >
                 {[
                   'Dengerin dulu, debatnya nanti.',
-                  'Kabarin tanpa disuruh, biar hati kamu tenang.',
-                  'Date quality time tiap minggu (no gadget 1 jam).',
-                  'Kirim foto kucing lucu kalau kamu capek.',
-                  'Ngomong “terima kasih” dan “maaf” lebih cepat.',
+                  'Perlahan gak marah marah gajelas lagi.',
+                  'Sering sering jajanin kamu.',
+                  'Jadi lebih baik dari sebelumnya.',
+                  'Lebih sabar lagi menghadapi kamu.',
                 ].map((txt, i) => (
                   <motion.li
                     key={i}
@@ -267,7 +266,6 @@ export default function UntukKamuPage() {
                 <Heart className="fill-current" />
                 Peluk Virtual
               </motion.button>
-              <p className="text-xs text-gray-500 mt-2">klik untuk melihat hujan hati</p>
             </div>
           </div>
         </div>

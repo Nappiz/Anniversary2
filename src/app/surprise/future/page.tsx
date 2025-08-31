@@ -98,30 +98,30 @@ export default function FuturePage() {
 
   const QUOTES = [
     'I choose you. Always.',
-    'We’re a team—today, tomorrow, always.',
-    'Kita pelan tapi pasti, bareng-bareng.',
+    'We’re a lover today, tomorrow, always.',
+    'Kita sering berantem, tapi terus bareng.',
     'Your hand fits in mine like it’s made just for me.',
-    'Grow old with me; the best is yet to be.',
-    'Senyummu, rumahku.'
+    'The best is yet to be.',
+    'I Love You more than yesterday.'
   ];
 
   const TL = [
-    { year: '2025', icon: Plane,  title: 'Liburan pertama', desc: 'Naik pesawat bareng, kulineran & foto candid tiap pagi.' },
-    { year: '2026', icon: Home,   title: 'Home sweet home', desc: 'Rumah mungil: sudut baca + balkon tanaman kamu.' },
-    { year: '2027', icon: PawPrint, title: 'Dua kucing gemoy', desc: 'Keluarga berbulu yang suka tidur di kaki kita.' },
-    { year: '2028', icon: Camera, title: 'Album “Tiny Big Days”', desc: 'Dokumentasi momen + resep favorit bulanan.' },
-    { year: '2030', icon: PiggyBank, title: 'Stabil & bahagia', desc: 'Tabungan impian aman, hidup sederhana penuh tawa.' },
+    { year: '2026', icon: Plane,  title: 'BSD', desc: 'Magang di BSD, aku mau tunjukkin banyak hal di BSD ke kamu!.' },
+    { year: '2027', icon: Home,   title: 'Lulus + Dapet Kerja', desc: 'Kerja dengan gaji diatas > 7 juta kita pasti bisa jalan teruss.' },
+    { year: '2028', icon: PawPrint, title: 'Nabung Bareng', desc: 'Nabung bareng sampe kita punya 100 juta pertama.' },
+    { year: '2029', icon: Camera, title: 'Rumah', desc: 'Punya rumah untuk kita setelah nikah nanti.' },
+    { year: '2030', icon: PiggyBank, title: 'Nikah', desc: 'Di tahun ini aku usahain lamar kamu dan nikahin kamu.' },
   ];
 
   const IDEAS = [
-    { title: 'Sunset Picnic', emoji: '🌅', text: 'Bawa roti, buah, dan playlist favorit ke taman.' },
-    { title: 'Cooking Battle', emoji: '🍳', text: 'Masak menu yang sama, versi kamu vs versiku.' },
+    { title: 'Nonton', emoji: '🍿', text: 'Nonton Bioskop di PM? PTC? GM? PCM? TP? Bebass.' },
+    { title: 'Masak Masak', emoji: '🍳', text: 'Masak menu yang belum pernah kita coba.' },
     { title: 'Photo Walk', emoji: '📸', text: 'Keliling kota cari spot lucu, foto candid tiap belokan.' },
-    { title: 'At-Home Spa', emoji: '💆‍♀️', text: 'Sheet mask + pijat ringan + aromaterapi.' },
-    { title: 'Movie Roulette', emoji: '🎬', text: 'Gantian pilih film random & snack aneh.' },
-    { title: 'Bookstore Date', emoji: '📚', text: 'Saling pilihkan buku, baca bareng di kafe.' },
-    { title: 'Board Games Night', emoji: '🎲', text: 'Game ringan + hadiah kecil untuk pemenang.' },
-    { title: 'Stargazing', emoji: '✨', text: 'Lihat bintang pakai aplikasi, tebak rasi favorit kita.' },
+    { title: 'Netflix n Chill', emoji: '🎬', text: 'Netflix n Chill di tempatku.' },
+    { title: 'Jatim Park', emoji: '🎡', text: 'Aku mau ke Jatim Park jugaa.' },
+    { title: 'Roblox Date', emoji: '🎮', text: 'Ayo kita cari map map lucu terus foto.' },
+    { title: 'Shopping', emoji: '🛍️', text: 'Semoga kamu ga dapet ini, aku cuma bingung mau isi apa lagi.' },
+    { title: 'Makan Makan', emoji: '🍽️', text: 'Ayo jajan dan makan makanan enak lagi.' },
   ];
   const [ideaIndex, setIdeaIndex] = useState(0);
   const shuffleIdea = () => {
@@ -207,7 +207,7 @@ export default function FuturePage() {
               <Sparkles className="text-pink-500" />
             </div>
             <p className="text-gray-600 text-center mt-4 max-w-2xl mx-auto">
-              Mimpi-mimpi kecil yang bikin masa depan jadi seru. Kita wujudkan bareng, pelan tapi pasti.
+              Mimpi-mimpi kecil yang bikin masa depan jadi seru. Semoga bisa kita wujudkan yaa.
             </p>
 
             <div className="mt-6 relative rounded-2xl border border-pink-100 bg-pink-50/60 p-3 overflow-hidden">
@@ -275,9 +275,9 @@ export default function FuturePage() {
               <SectionTitle>Our Vision Pillars</SectionTitle>
               <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
-                  { icon: Compass, title: 'Adventure', text: 'Selalu mencoba hal baru bareng—tempat, cerita, rasa.' },
-                  { icon: Target,  title: 'Growth',    text: 'Saling dukung mimpi & karier. Jadi versi terbaik.' },
-                  { icon: Stars,   title: 'Warmth',    text: 'Rumah yang hangat: hormat, jujur, dan banyak peluk.' },
+                  { icon: Compass, title: 'Adventure', text: 'Selalu mencoba hal baru bareng—tempat, cerita, makanan.' },
+                  { icon: Target,  title: 'Growth',    text: 'Saling dukung mimpi & karir. Jadi versi terbaik.' },
+                  { icon: Stars,   title: 'Warmth',    text: 'Rumah yang hangat: cerita, jujur, dan banyak peluk.' },
                 ].map((v, i) => {
                   const Icon = v.icon;
                   return (
@@ -339,34 +339,6 @@ export default function FuturePage() {
             </div>
 
             <div className="mt-10">
-              <SectionTitle>Our Little Vows</SectionTitle>
-              <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                {VOWS.map((v, i) => (
-                  <motion.button
-                    key={v.title}
-                    variants={fadeUp}
-                    initial="hidden"
-                    whileInView="show"
-                    viewport={{ once: true, margin: '-60px' }}
-                    custom={i}
-                    onClick={() => setFlipped((f) => ({ ...f, [v.title]: !f[v.title] }))}
-                    className="relative isolate h-[140px] rounded-2xl border border-pink-100 bg-white text-left shadow-sm hover:shadow-md transition-[transform,box-shadow] [transform-style:preserve-3d]"
-                    style={{ perspective: 800 }}
-                  >
-                    <div className={`absolute inset-0 p-5 backface-hidden ${flipped[v.title] ? 'rotate-y-180 opacity-0' : 'opacity-100'}`}>
-                      <div className="inline-flex items-center gap-2 rounded-full bg-pink-50 px-3 py-1 text-pink-700 text-sm font-semibold"><Wand2 size={16} /> {v.title}</div>
-                      <p className="mt-3 text-gray-600 text-sm">Tap untuk lihat janji kecilnya 💌</p>
-                    </div>
-                    <div className={`absolute inset-0 p-5 backface-hidden rotate-y-180 ${flipped[v.title] ? 'opacity-100' : 'opacity-0'}`}>
-                      <div className="text-pink-700 font-bold">{v.title}</div>
-                      <p className="mt-1 text-gray-600 text-sm">{v.text}</p>
-                    </div>
-                  </motion.button>
-                ))}
-              </div>
-            </div>
-
-            <div className="mt-10">
               <SectionTitle>Date Idea Generator</SectionTitle>
               <div className="mt-4 bg-pink-50/60 border border-pink-100 rounded-2xl p-5">
                 <div className="flex items-center justify-center gap-2 text-pink-800 font-semibold">
@@ -423,11 +395,11 @@ export default function FuturePage() {
                     burst({ x: ((rect.left + rect.width / 2) / window.innerWidth) * 100, y: ((rect.top + rect.height / 2) / window.innerHeight) * 100 });
                   }}
                 >
-                  Lihat Journey <ArrowRight size={18} />
+                  I Love You
                 </Link>
               </motion.div>
               <Link href="/surprise/untuk-kamu" className="text-xs text-pink-700 hover:underline">
-                atau tulis pesan untukku ✍️
+                Aku ada kata kata untuk kamu ✍️
               </Link>
             </div>
           </div>

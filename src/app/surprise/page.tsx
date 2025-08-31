@@ -18,22 +18,21 @@ export default function SurpriseHomePage() {
             Happy 2nd Anniversary, Sayang! 💞
           </h1>
           <p className="mt-3 sm:mt-4 text-gray-700 text-base sm:text-lg leading-relaxed">
-            Ini dunia kecil kita—tempat kenangan, mimpi, dan rencana masa depan.
-            Buka tiap halaman, selesaikan tantangan, dan nikmati perjalanan cinta kita. 🫶
+            Ini dunia kecil kita! tempat kenangan, mimpi, dan rencana kita nanti. Buka semua halaman, mainin gamesnya, dan semoga kamu suka yaaa 🫶
           </p>
 
           {!isUnlocked && (
             <div className="mt-6 sm:mt-8 rounded-2xl border border-pink-200 bg-pink-50/80 p-4 sm:p-6">
               <p className="font-semibold text-pink-800">
-                Untuk membuka halaman spesial, kamu harus menuntaskan game dulu ya! ✨
+                Biar bisa buka page lain, kamu harus menangin gamenya dulu! ✨
               </p>
               <p className="text-pink-700/80 mt-1 text-sm">
-                Hint: sabar, teliti, dan jangan menyerah~
+                sabar, teliti, dan yang bener~
               </p>
               <Link href="/surprise/games" className="inline-block mt-4">
                 <button className="cursor-pointer bg-pink-600 text-white font-semibold py-2.5 px-5 rounded-xl shadow-md hover:bg-pink-700 active:scale-95 transition flex items-center gap-2">
                   <Gamepad2 size={20} />
-                  <span>Mainkan Game</span>
+                  <span>Gass main!</span>
                 </button>
               </Link>
             </div>
@@ -45,7 +44,7 @@ export default function SurpriseHomePage() {
         <CardLink
           href="/surprise/games"
           title="Games"
-          desc="Pemanasan seru sebelum buka gerbang rahasia 💌"
+          desc="Pemanasan dulu sebelum buka page specialnya"
           icon={<Gamepad2 />}
         />
         <CardLink
@@ -58,21 +57,21 @@ export default function SurpriseHomePage() {
         <CardLink
           href="/surprise/future"
           title="Future"
-          desc="Bucket list, rencana liburan, dan mimpi bareng"
+          desc="Bucket list, rencana liburan, dan mimpi kita"
           icon={<HeartHandshake />}
           locked={!isUnlocked}
         />
         <CardLink
           href="/surprise/gallery"
           title="Gallery"
-          desc="Kumpulan foto favorit kita (biar bisa senyum-senyum sendiri)"
+          desc="Kumpulan foto foto kita hehee"
           icon={<Images />}
           locked={!isUnlocked}
         />
         <CardLink
           href="/surprise/untuk-kamu"
           title="Untuk Kamu"
-          desc="Surat dan pesan khusus buat kamu"
+          desc="Surat dan pesan buat kamu"
           icon={<HeartHandshake />}
           locked={!isUnlocked}
         />

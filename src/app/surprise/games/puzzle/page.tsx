@@ -231,7 +231,7 @@ export default function PuzzlePage() {
                 onClick={() => setShowReference((v) => !v)}
                 className="px-3 py-2 rounded-xl text-sm font-medium bg-gray-800 text-white hover:bg-black active:scale-[0.99] transition"
               >
-                {showReference ? 'Sembunyikan Referensi' : 'Tampilkan Referensi'}
+                {showReference ? 'Hide Gambar Asli' : 'Show Gambar Asli'}
               </button>
             </div>
           </div>
