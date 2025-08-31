@@ -9,7 +9,6 @@ export default function SurpriseHomePage() {
 
   return (
     <div className="mx-auto max-w-5xl">
-      {/* Hero */}
       <section className="mt-6 sm:mt-10 text-center">
         <div className="mx-auto max-w-3xl rounded-3xl p-6 sm:p-10 bg-white/70 backdrop-blur border border-white/60 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
           <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white shadow">
@@ -42,7 +41,6 @@ export default function SurpriseHomePage() {
         </div>
       </section>
 
-      {/* Quick Links / Bento */}
       <section className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <CardLink
           href="/surprise/games"

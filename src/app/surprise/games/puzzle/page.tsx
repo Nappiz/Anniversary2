@@ -192,7 +192,6 @@ export default function PuzzlePage() {
         </div>
 
         <div className="flex w-full flex-col lg:flex-row gap-5 sm:gap-8 items-start">
-          {/* BOARD WRAPPER */}
           <div className="lg:flex-1 w-full">
             <div
               ref={wrapperRef}
@@ -239,7 +238,6 @@ export default function PuzzlePage() {
 
           {/* SIDE PANEL / TRAY */}
           <div className="w-full lg:max-w-sm space-y-4">
-            {/* Gambar Asli (diperkecil di mobile) */}
             {showReference && (
               <div className="bg-white/70 backdrop-blur rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.06)] p-3 sm:p-4 max-w-[220px] sm:max-w-none mx-auto">
                 <h3 className="font-semibold text-gray-700 mb-2 text-center text-sm">
