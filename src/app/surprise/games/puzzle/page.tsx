@@ -175,8 +175,10 @@ export default function PuzzlePage() {
 
           {/* SIDE PANEL / TRAY */}
           <div className="w-full lg:max-w-sm space-y-4">
-            <div className="bg-white p-4 rounded-xl shadow-lg">
-              <h3 className="font-bold text-gray-700 mb-2 text-center">Gambar Asli</h3>
+            <div className="bg-white p-3 sm:p-4 rounded-xl shadow-lg max-w-[300px] sm:max-w-none mx-auto">
+              <h3 className="font-bold text-gray-700 mb-2 text-center text-sm sm:text-base">
+                Gambar Asli
+              </h3>
               <div className="relative w-full aspect-square rounded-md overflow-hidden">
                 <Image
                   src={IMAGE_SRC}

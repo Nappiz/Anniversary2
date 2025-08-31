@@ -1,43 +1,47 @@
-// app/components/games/PuzzlePiece.tsx
 'use client';
-import { useDrag } from 'react-dnd';
-import { useRef } from 'react';
 
-// Tambahkan boardDimension di sini
-type PuzzlePieceProps = {
+import { useDrag } from 'react-dnd';
+import clsx from 'clsx';
+
+export default function PuzzlePiece({
+  id,
+  src,
+  pieceSize,
+  boardDimension,
+  position,
+}: {
   id: number;
   src: string;
-  position: {x: number, y: number};
   pieceSize: number;
-  boardDimension: number; 
-};
-
-export default function PuzzlePiece({ id, src, position, pieceSize, boardDimension }: PuzzlePieceProps) {
-  const ref = useRef<HTMLDivElement>(null);
-  
+  boardDimension: number;
+  position: { x: number; y: number };
+}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'puzzle-piece',
     item: { id },
     collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
+      isDragging: monitor.isDragging(),
     }),
-  }));
-
-  drag(ref);
+  }), [id]);
 
   return (
     <div
-      ref={ref}
-      className="cursor-grab active:cursor-grabbing"
-      style={{
-        opacity: isDragging ? 0.5 : 1,
-        width: pieceSize,
-        height: pieceSize,
-        backgroundImage: `url(${src})`,
-        backgroundPosition: `-${position.x}px -${position.y}px`,
-        backgroundSize: `${boardDimension}px ${boardDimension}px`,
-        border: '1px solid #fff',
-      }}
-    />
+      ref={drag}
+      className={clsx(
+        'relative rounded-md select-none touch-none',
+        'transition-transform duration-150 ease-out cursor-grab active:cursor-grabbing',
+        isDragging && 'opacity-80 scale-105 ring-2 ring-pink-400 shadow-xl z-20',
+      )}
+      style={{ width: pieceSize, height: pieceSize }}
+    >
+      <div
+        className="absolute inset-0 rounded-[6px]"
+        style={{  
+          backgroundImage: `url(${src})`,
+          backgroundSize: `${boardDimension}px ${boardDimension}px`,
+          backgroundPosition: `-${position.x}px -${position.y}px`,
+        }}
+      />
+    </div>
   );
 }
