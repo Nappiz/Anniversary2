@@ -1,45 +1,42 @@
 'use client';
 
-import { useDrag } from 'react-dnd';
 import clsx from 'clsx';
 
 export default function PuzzlePiece({
   id,
-  src,
-  pieceSize,
+  size,
+  imageSrc,
+  gridSize,
   boardDimension,
-  position,
+  isSelected,
 }: {
   id: number;
-  src: string;
-  pieceSize: number;
-  boardDimension: number;
-  position: { x: number; y: number };
+  size: number;                  // ukuran potongan di tray
+  imageSrc: string;
+  gridSize: number;
+  boardDimension: number;        // ukuran papan versi "tray" (scaled)
+  isSelected?: boolean;
 }) {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'puzzle-piece',
-    item: { id },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-    }),
-  }), [id]);
+  const bgX = ((id - 1) % gridSize) * size;
+  const bgY = Math.floor((id - 1) / gridSize) * size;
 
   return (
     <div
-      ref={drag}
       className={clsx(
-        'relative rounded-md select-none touch-none',
-        'transition-transform duration-150 ease-out cursor-grab active:cursor-grabbing',
-        isDragging && 'opacity-80 scale-105 ring-2 ring-pink-400 shadow-xl z-20',
+        'relative',
+        'rounded-lg overflow-hidden',
+        'transition-transform duration-100',
+        isSelected ? 'ring-2 ring-pink-500' : 'ring-1 ring-gray-200',
+        'active:scale-[0.98]'
       )}
-      style={{ width: pieceSize, height: pieceSize }}
+      style={{ width: size, height: size }}
     >
       <div
-        className="absolute inset-0 rounded-[6px]"
-        style={{  
-          backgroundImage: `url(${src})`,
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${imageSrc})`,
           backgroundSize: `${boardDimension}px ${boardDimension}px`,
-          backgroundPosition: `-${position.x}px -${position.y}px`,
+          backgroundPosition: `-${bgX}px -${bgY}px`,
         }}
       />
     </div>

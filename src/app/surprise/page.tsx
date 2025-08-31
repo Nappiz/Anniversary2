@@ -1,39 +1,120 @@
 'use client';
 
-import { Gift, Gamepad2 } from 'lucide-react';
+import { Gift, Gamepad2, HeartHandshake, Images, Map } from 'lucide-react';
 import Link from 'next/link';
-import { useLock } from '../context/LockContext'; 
+import { useLock } from '../context/LockContext';
 
 export default function SurpriseHomePage() {
-  const { isUnlocked } = useLock(); 
+  const { isUnlocked } = useLock();
 
   return (
-    <div className="flex flex-col items-center justify-center text-center mt-16">
-      <div className="bg-white p-10 md:p-16 rounded-2xl shadow-xl max-w-2xl mx-auto">
-        <Gift size={64} className="text-pink-500 mx-auto animate-bounce" />
-        <h1 className="text-4xl md:text-5xl font-bold text-pink-600 mt-6">
-          Welcome to Our World!
-        </h1>
-        <p className="text-gray-600 mt-4 text-lg">
-          Halo sayang!! Hayoo bingung yaa ini apaa hihi, ini adalah petualangan journey dunia kita, Penasaran?? mainin dulu gamenya! 
-        </p>
-        { !isUnlocked && (
-          <div className="mt-8 bg-pink-50 p-6 rounded-lg border border-pink-200 transition-opacity duration-500">
-            <p className="font-semibold text-pink-800">
-              Kalo mau buka yang lain lain, kamu harus mainin gamesnya dulu bib, harus menang loh yaa!
-            </p>
-            <p className="text-pink-700/80 mt-1 text-sm">
-              Yuu, main gamenya dulu!
-            </p>
-            <Link href="/surprise/games">
-              <button className="cursor-pointer mt-4 bg-pink-500 text-white font-bold py-2 px-5 rounded-lg shadow-md hover:bg-pink-600 transition-all transform hover:scale-105 flex items-center gap-2 mx-auto">
-                <Gamepad2 size={20} />
-                <span>Mainkan Game</span>
-              </button>
-            </Link>
+    <div className="mx-auto max-w-5xl">
+      {/* Hero */}
+      <section className="mt-6 sm:mt-10 text-center">
+        <div className="mx-auto max-w-3xl rounded-3xl p-6 sm:p-10 bg-white/70 backdrop-blur border border-white/60 shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+          <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white shadow">
+            <Gift className="animate-pulse" />
           </div>
-        )}
-      </div>
+          <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-pink-700">
+            Happy 2nd Anniversary, Sayang! 💞
+          </h1>
+          <p className="mt-3 sm:mt-4 text-gray-700 text-base sm:text-lg leading-relaxed">
+            Ini dunia kecil kita—tempat kenangan, mimpi, dan rencana masa depan.
+            Buka tiap halaman, selesaikan tantangan, dan nikmati perjalanan cinta kita. 🫶
+          </p>
+
+          {!isUnlocked && (
+            <div className="mt-6 sm:mt-8 rounded-2xl border border-pink-200 bg-pink-50/80 p-4 sm:p-6">
+              <p className="font-semibold text-pink-800">
+                Untuk membuka halaman spesial, kamu harus menuntaskan game dulu ya! ✨
+              </p>
+              <p className="text-pink-700/80 mt-1 text-sm">
+                Hint: sabar, teliti, dan jangan menyerah~
+              </p>
+              <Link href="/surprise/games" className="inline-block mt-4">
+                <button className="cursor-pointer bg-pink-600 text-white font-semibold py-2.5 px-5 rounded-xl shadow-md hover:bg-pink-700 active:scale-95 transition flex items-center gap-2">
+                  <Gamepad2 size={20} />
+                  <span>Mainkan Game</span>
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Quick Links / Bento */}
+      <section className="mt-8 sm:mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <CardLink
+          href="/surprise/games"
+          title="Games"
+          desc="Pemanasan seru sebelum buka gerbang rahasia 💌"
+          icon={<Gamepad2 />}
+        />
+        <CardLink
+          href="/surprise/journey"
+          title="Journey"
+          desc="Timeline kenangan kita dari awal sampai sekarang"
+          icon={<Map />}
+          locked={!isUnlocked}
+        />
+        <CardLink
+          href="/surprise/future"
+          title="Future"
+          desc="Bucket list, rencana liburan, dan mimpi bareng"
+          icon={<HeartHandshake />}
+          locked={!isUnlocked}
+        />
+        <CardLink
+          href="/surprise/gallery"
+          title="Gallery"
+          desc="Kumpulan foto favorit kita (biar bisa senyum-senyum sendiri)"
+          icon={<Images />}
+          locked={!isUnlocked}
+        />
+        <CardLink
+          href="/surprise/untuk-kamu"
+          title="Untuk Kamu"
+          desc="Surat dan pesan khusus buat kamu"
+          icon={<HeartHandshake />}
+          locked={!isUnlocked}
+        />
+      </section>
     </div>
+  );
+}
+
+function CardLink({
+  href,
+  title,
+  desc,
+  icon,
+  locked,
+}: {
+  href: string;
+  title: string;
+  desc: string;
+  icon: React.ReactNode;
+  locked?: boolean;
+}) {
+  const inner = (
+    <div className="relative h-full rounded-2xl border border-white/60 bg-white/70 backdrop-blur p-5 shadow-[0_10px_30px_rgba(0,0,0,0.06)] transition hover:-translate-y-0.5 active:translate-y-0">
+      <div className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-tr from-pink-500 to-rose-400 text-white shadow">
+        {icon}
+      </div>
+      <h3 className="text-lg font-bold text-pink-800">{title}</h3>
+      <p className="mt-1 text-sm text-gray-600">{desc}</p>
+      {locked && (
+        <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-pink-100 px-2 py-1 text-xs font-semibold text-pink-700">
+          <svg width="12" height="12" viewBox="0 0 24 24" className="opacity-80"><path fill="currentColor" d="M12 17a2 2 0 1 0 0-4a2 2 0 0 0 0 4m6-6h-1V9a5 5 0 1 0-10 0v2H6a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2m-3 0H9V9a3 3 0 0 1 6 0z"/></svg>
+          Locked
+        </span>
+      )}
+    </div>
+  );
+
+  return locked ? (
+    <div className="opacity-60 cursor-not-allowed">{inner}</div>
+  ) : (
+    <Link href={href} className="block">{inner}</Link>
   );
 }

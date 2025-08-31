@@ -1,15 +1,16 @@
 // app/surprise/layout.tsx
 import Navbar from '../components/surprise/Navbar';
 import { LockProvider } from '../context/LockContext';
-import { GameProgressProvider } from '../context/GameProgressContext'; // <-- IMPORT
+import { GameProgressProvider } from '../context/GameProgressContext';
 
-export default function SurpriseLayout({ children }: { children: React.Node }) {
+export default function SurpriseLayout({ children }: { children: React.ReactNode }) {
   return (
     <LockProvider>
-      <GameProgressProvider> {/* <-- BUNGKUS DENGAN PROVIDER BARU */}
+      <GameProgressProvider>
         <div className="min-h-screen w-full bg-rose-50">
           <Navbar />
-          <main>{children}</main>
+          {/* ruang di bawah navbar fixed (h-16 = 64px) */}
+          <main className="pt-16">{children}</main>
         </div>
       </GameProgressProvider>
     </LockProvider>

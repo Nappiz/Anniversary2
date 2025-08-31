@@ -1,29 +1,38 @@
 'use client';
 
 import clsx from 'clsx';
-import { useDrop } from 'react-dnd';
 
-type DragItem = { id: number; type: 'puzzle-piece' };
-type Slot = { id: number; piece: { id: number } | null };
+type Piece = { id: number };
+type Slot = { id: number; piece: Piece | null };
 
 export default function PuzzleBoard({
   board,
-  onDrop,
+  onCellClick,
   pieceSize,
   imageSrc,
   boardDimension,
+  selectedPieceId,
+  selectedFrom,
+  selectedOriginSlotId,
+  hoveredSlotId,
+  setHoveredSlotId,
+  gridSize,
 }: {
   board: Slot[];
-  onDrop: (slotId: number, pieceId: number) => void;
+  onCellClick: (slotId: number) => void;
   pieceSize: number;
   imageSrc: string;
   boardDimension: number;
+  selectedPieceId: number | null;
+  selectedFrom: 'tray' | 'board' | null;
+  selectedOriginSlotId: number | null;
+  hoveredSlotId: number | null;
+  setHoveredSlotId: (id: number | null) => void;
+  gridSize: number;
 }) {
-  const gridSize = Math.round(Math.sqrt(board.length));
-
   return (
     <div
-      className="relative"
+      className="relative select-none"
       style={{ width: boardDimension, height: boardDimension }}
     >
       <div
@@ -37,11 +46,15 @@ export default function PuzzleBoard({
           <BoardCell
             key={slot.id}
             slot={slot}
-            gridSize={gridSize}
             pieceSize={pieceSize}
             imageSrc={imageSrc}
             boardDimension={boardDimension}
-            onDrop={onDrop}
+            onClick={() => onCellClick(slot.id)}
+            isHovered={hoveredSlotId === slot.id}
+            onHover={(v) => setHoveredSlotId(v ? slot.id : null)}
+            isSelectedOrigin={selectedFrom === 'board' && selectedOriginSlotId === slot.id}
+            selectedPieceId={selectedPieceId}
+            gridSize={gridSize}
           />
         ))}
       </div>
@@ -51,51 +64,51 @@ export default function PuzzleBoard({
 
 function BoardCell({
   slot,
-  gridSize,
   pieceSize,
   imageSrc,
   boardDimension,
-  onDrop,
+  onClick,
+  isHovered,
+  onHover,
+  isSelectedOrigin,
+  selectedPieceId,
+  gridSize,
 }: {
   slot: Slot;
-  gridSize: number;
   pieceSize: number;
   imageSrc: string;
   boardDimension: number;
-  onDrop: (slotId: number, pieceId: number) => void;
+  onClick: () => void;
+  isHovered: boolean;
+  onHover: (hovering: boolean) => void;
+  isSelectedOrigin: boolean;
+  selectedPieceId: number | null;
+  gridSize: number;
 }) {
-  const [{ isOver, draggedId }, drop] = useDrop<
-    DragItem,
-    void,
-    { isOver: boolean; draggedId?: number }
-  >(() => ({
-    accept: 'puzzle-piece',
-    drop: (item) => onDrop(slot.id, item.id),
-    collect: (monitor) => ({
-      isOver: monitor.isOver({ shallow: true }),
-      draggedId: (monitor.getItem() as any)?.id,
-    }),
-  }));
-
-  const correctHover = isOver && draggedId === slot.id;
-  const wrongHover = isOver && draggedId !== slot.id;
-
   // posisi background untuk potongan yang terpasang
-  const idForBG = slot.piece?.id ?? slot.id; // fallback: slot.id untuk placeholder grid
+  const idForBG = slot.piece?.id ?? slot.id; // placeholder grid pakai slot.id
   const bgX = ((idForBG - 1) % gridSize) * pieceSize;
   const bgY = Math.floor((idForBG - 1) / gridSize) * pieceSize;
 
+  const showPreview = selectedPieceId !== null && isHovered && !slot.piece;
+  const correctPreview = showPreview && selectedPieceId === slot.id;
+
   return (
-    <div
-      ref={drop}
+    <button
+      onClick={onClick}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
+      onTouchStart={() => onHover(true)}
+      onTouchEnd={() => onHover(false)}
       className={clsx(
-        'relative border border-neutral-200 bg-white/60',
+        'relative',
+        'border border-neutral-200 bg-white/60',
         'transition-all duration-150 ease-out',
-        isOver && 'ring-2',
-        correctHover && 'ring-emerald-500 scale-[1.02] bg-emerald-50',
-        wrongHover && 'ring-rose-400 bg-rose-50',
+        isSelectedOrigin && 'ring-2 ring-pink-500',
+        'focus:outline-none focus:ring-2 focus:ring-pink-500'
       )}
       style={{ width: pieceSize, height: pieceSize }}
+      aria-label={`Slot ${slot.id}`}
     >
       {/* Potongan yang sudah ditempatkan */}
       {slot.piece && (
@@ -109,15 +122,15 @@ function BoardCell({
         />
       )}
 
-      {/* Ghost preview halus saat hover di slot kosong */}
-      {!slot.piece && isOver && (
+      {/* Ghost preview saat hover & ada selection dari tray */}
+      {showPreview && (
         <div
           className={clsx(
-            'absolute inset-0 rounded-sm opacity-25',
-            correctHover ? 'bg-emerald-400' : 'bg-rose-400',
+            'absolute inset-0 rounded-sm opacity-30',
+            correctPreview ? 'bg-emerald-400' : 'bg-rose-400'
           )}
         />
       )}
-    </div>
+    </button>
   );
 }
